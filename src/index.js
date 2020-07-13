@@ -116,6 +116,13 @@ export default class Warning {
       title: data.title || '',
       message: data.message || ''
     };
+
+    /**
+     * List of settings buttons
+     *
+     * @type {HTMLElement[]}
+     */
+    this.settingsButtons = [];
   }
 
   /**
