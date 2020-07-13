@@ -48,6 +48,16 @@ export default class Warning {
   }
 
   /**
+   * Default warning type
+   *
+   * @public
+   * @returns {string}
+   */
+  static get DEFAULT_TYPE() {
+    return 'default';
+  }
+
+  /**
    * Default placeholder for warning title
    *
    * @public
@@ -68,16 +78,30 @@ export default class Warning {
   }
 
   /**
-   * @returns {string[]}
+   * @returns {array}
    */
   get types() {
     return [
-        'default',
-        'info',
-        'success',
-        'warning',
-        'error',
-        'danger'
+      {
+        'key': 'default',
+        'svg': '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#777" d="M3.878,2.973L3.878,17.027C2.763,16.972 1.875,16.049 1.875,14.921L1.875,5.079C1.875,3.951 2.763,3.028 3.878,2.973Z"/><path d="M18.15,5.054C18.15,3.89 17.155,2.945 15.93,2.945L3.266,2.945C2.041,2.945 1.047,3.89 1.047,5.054L1.047,14.896C1.047,16.06 2.041,17.005 3.266,17.005L15.93,17.005C17.155,17.005 18.15,16.06 18.15,14.896L18.15,5.054ZM17.097,5.054L17.097,14.896C17.097,15.508 16.574,16.005 15.93,16.005L3.266,16.005C2.622,16.005 2.099,15.508 2.099,14.896C2.099,14.896 2.099,5.054 2.099,5.054C2.099,4.442 2.622,3.945 3.266,3.945L15.93,3.945C16.574,3.945 17.097,4.442 17.097,5.054Z"/></svg>'
+      },
+      {
+        'key': 'info',
+        'svg': '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#1D67BD" d="M3.878,2.973L3.878,17.027C2.763,16.972 1.875,16.049 1.875,14.921L1.875,5.079C1.875,3.951 2.763,3.028 3.878,2.973Z"/><path d="M18.15,5.054C18.15,3.89 17.155,2.945 15.93,2.945L3.266,2.945C2.041,2.945 1.047,3.89 1.047,5.054L1.047,14.896C1.047,16.06 2.041,17.005 3.266,17.005L15.93,17.005C17.155,17.005 18.15,16.06 18.15,14.896L18.15,5.054ZM17.097,5.054L17.097,14.896C17.097,15.508 16.574,16.005 15.93,16.005L3.266,16.005C2.622,16.005 2.099,15.508 2.099,14.896C2.099,14.896 2.099,5.054 2.099,5.054C2.099,4.442 2.622,3.945 3.266,3.945L15.93,3.945C16.574,3.945 17.097,4.442 17.097,5.054Z"/></svg>'
+      },
+      {
+        'key': 'success',
+        'svg': '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#5cb85c" d="M3.878,2.973L3.878,17.027C2.763,16.972 1.875,16.049 1.875,14.921L1.875,5.079C1.875,3.951 2.763,3.028 3.878,2.973Z"/><path d="M18.15,5.054C18.15,3.89 17.155,2.945 15.93,2.945L3.266,2.945C2.041,2.945 1.047,3.89 1.047,5.054L1.047,14.896C1.047,16.06 2.041,17.005 3.266,17.005L15.93,17.005C17.155,17.005 18.15,16.06 18.15,14.896L18.15,5.054ZM17.097,5.054L17.097,14.896C17.097,15.508 16.574,16.005 15.93,16.005L3.266,16.005C2.622,16.005 2.099,15.508 2.099,14.896C2.099,14.896 2.099,5.054 2.099,5.054C2.099,4.442 2.622,3.945 3.266,3.945L15.93,3.945C16.574,3.945 17.097,4.442 17.097,5.054Z"/></svg>'
+      },
+      {
+        'key': 'warning',
+        'svg': '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#f0ad4e" d="M3.878,2.973L3.878,17.027C2.763,16.972 1.875,16.049 1.875,14.921L1.875,5.079C1.875,3.951 2.763,3.028 3.878,2.973Z"/><path d="M18.15,5.054C18.15,3.89 17.155,2.945 15.93,2.945L3.266,2.945C2.041,2.945 1.047,3.89 1.047,5.054L1.047,14.896C1.047,16.06 2.041,17.005 3.266,17.005L15.93,17.005C17.155,17.005 18.15,16.06 18.15,14.896L18.15,5.054ZM17.097,5.054L17.097,14.896C17.097,15.508 16.574,16.005 15.93,16.005L3.266,16.005C2.622,16.005 2.099,15.508 2.099,14.896C2.099,14.896 2.099,5.054 2.099,5.054C2.099,4.442 2.622,3.945 3.266,3.945L15.93,3.945C16.574,3.945 17.097,4.442 17.097,5.054Z"/></svg>'
+      },
+      {
+        'key': 'danger',
+        'svg': '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#d9534f" d="M3.878,2.973L3.878,17.027C2.763,16.972 1.875,16.049 1.875,14.921L1.875,5.079C1.875,3.951 2.763,3.028 3.878,2.973Z"/><path d="M18.15,5.054C18.15,3.89 17.155,2.945 15.93,2.945L3.266,2.945C2.041,2.945 1.047,3.89 1.047,5.054L1.047,14.896C1.047,16.06 2.041,17.005 3.266,17.005L15.93,17.005C17.155,17.005 18.15,16.06 18.15,14.896L18.15,5.054ZM17.097,5.054L17.097,14.896C17.097,15.508 16.574,16.005 15.93,16.005L3.266,16.005C2.622,16.005 2.099,15.508 2.099,14.896C2.099,14.896 2.099,5.054 2.099,5.054C2.099,4.442 2.622,3.945 3.266,3.945L15.93,3.945C16.574,3.945 17.097,4.442 17.097,5.054Z"/></svg>'
+      },
     ];
   }
 
@@ -109,10 +133,12 @@ export default class Warning {
   constructor({data, config, api}) {
     this.api = api;
 
+    this.defaultType = config.warningType || Warning.DEFAULT_TYPE;
     this.titlePlaceholder = config.titlePlaceholder || Warning.DEFAULT_TITLE_PLACEHOLDER;
     this.messagePlaceholder = config.messagePlaceholder || Warning.DEFAULT_MESSAGE_PLACEHOLDER;
 
     this.data = {
+      type: this.currentType.key,
       title: data.title || '',
       message: data.message || ''
     };
@@ -123,6 +149,21 @@ export default class Warning {
      * @type {HTMLElement[]}
      */
     this.settingsButtons = [];
+  }
+
+  /**
+   * Get current type
+   *
+   * @returns {string}
+   */
+  get currentType() {
+    let type = this.types.find(typeItem => typeItem.key === this.data.type);
+
+    if (!type) {
+      type = this.defaultType;
+    }
+
+    return type;
   }
 
   /**
@@ -168,25 +209,25 @@ export default class Warning {
       /**
        * Highlight current level button
        */
-      if (this.currentLevel.number === type.number) {
+      if (this.currentType.key === type.key) {
         selectTypeButton.classList.add(this.CSS.settingsButtonActive);
       }
 
       /**
        * Add SVG icon
        */
-      selectTypeButton.innerHTML = type;//.svg;
+      selectTypeButton.innerHTML = type.svg;
 
       /**
        * Save level to its button
        */
-      selectTypeButton.dataset.type = type;//.number;
+      selectTypeButton.dataset.type = type.key;
 
       /**
        * Set up click handler
        */
       selectTypeButton.addEventListener('click', () => {
-        this.setLevel(type.number);
+        this.setType(type.key);
       });
 
       /**
@@ -206,13 +247,12 @@ export default class Warning {
   /**
    * Callback for Block's settings buttons
    *
-   * @param {number} type - type to set
+   * @param {string} type - type to set
    */
   setType(type) {
-    this.data = {
+    this.data = Object.assign(this.data, {
       type: type,
-      text: this.data.text,
-    };
+    });
 
     /**
      * Highlight button by selected level
@@ -226,13 +266,14 @@ export default class Warning {
    * Extract Warning data from Warning Tool element
    *
    * @param {HTMLDivElement} warningElement - element to save
-   * @returns {WarningData}
+   * @returns {object}
    */
   save(warningElement) {
     const title = warningElement.querySelector(`.${this.CSS.title}`);
     const message = warningElement.querySelector(`.${this.CSS.message}`);
 
     return Object.assign(this.data, {
+      type: this.currentType.key,
       title: title.innerHTML,
       message: message.innerHTML
     });
