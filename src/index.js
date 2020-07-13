@@ -70,7 +70,7 @@ export default class Warning {
   /**
    * @returns {string[]}
    */
-  static get types() {
+  get types() {
     return [
         'default',
         'info',
