@@ -138,7 +138,7 @@ export default class Warning {
     this.messagePlaceholder = config.messagePlaceholder || Warning.DEFAULT_MESSAGE_PLACEHOLDER;
 
     this.data = {
-      type: this.currentType.key,
+      type: data.type || this.defaultType,
       title: data.title || '',
       message: data.message || ''
     };
