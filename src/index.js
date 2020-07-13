@@ -163,13 +163,13 @@ export default class Warning {
     this.types.forEach(type => {
       const selectTypeButton = document.createElement('SPAN');
 
-      selectTypeButton.classList.add(this._CSS.settingsButton);
+      selectTypeButton.classList.add(this.CSS.settingsButton);
 
       /**
        * Highlight current level button
        */
       if (this.currentLevel.number === type.number) {
-        selectTypeButton.classList.add(this._CSS.settingsButtonActive);
+        selectTypeButton.classList.add(this.CSS.settingsButtonActive);
       }
 
       /**
@@ -218,7 +218,7 @@ export default class Warning {
      * Highlight button by selected level
      */
     this.settingsButtons.forEach(button => {
-      button.classList.toggle(this._CSS.settingsButtonActive, parseInt(button.dataset.type) === type);
+      button.classList.toggle(this.CSS.settingsButtonActive, parseInt(button.dataset.type) === type);
     });
   }
 
