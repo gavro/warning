@@ -68,6 +68,20 @@ export default class Warning {
   }
 
   /**
+   * @returns {string[]}
+   */
+  static get types() {
+    return [
+        'default',
+        'info',
+        'success',
+        'warning',
+        'error',
+        'danger'
+    ];
+  }
+
+  /**
    * Warning Tool`s styles
    *
    * @returns {Object}
@@ -78,7 +92,10 @@ export default class Warning {
       wrapper: 'cdx-warning',
       title: 'cdx-warning__title',
       input: this.api.styles.input,
-      message: 'cdx-warning__message'
+      message: 'cdx-warning__message',
+      block: this.api.styles.block,
+      settingsButton: this.api.styles.settingsButton,
+      settingsButtonActive: this.api.styles.settingsButtonActive,
     };
   }
 
@@ -124,6 +141,78 @@ export default class Warning {
     container.appendChild(message);
 
     return container;
+  }
+
+
+  /**
+   * Create Block's settings block
+   *
+   * @returns {HTMLElement}
+   */
+  renderSettings() {
+    const holder = document.createElement('DIV');
+
+    /** Add type selectors */
+    this.types.forEach(type => {
+      const selectTypeButton = document.createElement('SPAN');
+
+      selectTypeButton.classList.add(this._CSS.settingsButton);
+
+      /**
+       * Highlight current level button
+       */
+      if (this.currentLevel.number === type.number) {
+        selectTypeButton.classList.add(this._CSS.settingsButtonActive);
+      }
+
+      /**
+       * Add SVG icon
+       */
+      selectTypeButton.innerHTML = type;//.svg;
+
+      /**
+       * Save level to its button
+       */
+      selectTypeButton.dataset.type = type;//.number;
+
+      /**
+       * Set up click handler
+       */
+      selectTypeButton.addEventListener('click', () => {
+        this.setLevel(type.number);
+      });
+
+      /**
+       * Append settings button to holder
+       */
+      holder.appendChild(selectTypeButton);
+
+      /**
+       * Save settings buttons
+       */
+      this.settingsButtons.push(selectTypeButton);
+    });
+
+    return holder;
+  }
+
+  /**
+   * Callback for Block's settings buttons
+   *
+   * @param {number} type - type to set
+   */
+  setType(type) {
+    this.data = {
+      type: type,
+      text: this.data.text,
+    };
+
+    /**
+     * Highlight button by selected level
+     */
+    this.settingsButtons.forEach(button => {
+      button.classList.toggle(this._CSS.settingsButtonActive, parseInt(button.dataset.type) === type);
+    });
   }
 
   /**
