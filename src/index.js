@@ -327,7 +327,9 @@ export default class Warning {
     return {
       type: false,
       title: {},
-      message: {},
+      message: {
+        br: true
+      },
     };
   }
 }
